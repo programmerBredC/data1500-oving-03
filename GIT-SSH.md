@@ -30,7 +30,23 @@ Generer et unikt SSH-nøkkelpar for GitHub-kontoen din. Det er kritisk å lagre 
     ```bash
     $ ssh-keygen -t ed25519 -C "din-epost-for-ghbruker@example.com" -f ~/.ssh/id_ed25519_ghbruker
     ```
-Når du blir spurt om en "passphrase", kan du trykke Enter for å la den være tom, eller angi et passord for ekstra sikkerhet. Du trenger ikke å spesifisere "passphrase" i denne omgangen. 
+
+    Alternativet hvis `-f ~/.ssh/id_ed25519_ghbruker` ikke funksjonerer:
+
+    ```bash
+    $ ssh-keygen -t ed25519 -C "din-epost-for-ghbruker@example.com"
+    ```
+
+    Godkjenne alt uten noen endringer, slik at nøklene blir lagret i mappen `~/.ssh/`, hvor `~` betegner hjemmemappe for den gjeldende brukeren. Endre navnet på nøkkelfilene, slik at det er enklere å vite hvilke nøklder som gjelder hvilken konto (i tilfelle man ønsker å jobbe mot flere kontoer/servere):
+
+    ```bash
+    $ cd ~/.ssh
+    $ mv id_ed25519 id_ed25519_ghbruker
+    $ mv id_ed25519.pub id_ed25519_ghbruker.pub
+    ```
+
+
+    Når du blir spurt om en "passphrase", kan du trykke Enter for å la den være tom, eller angi et passord for ekstra sikkerhet. Du trenger ikke å spesifisere "passphrase" i denne omgangen. 
 
 ### Steg 3: Legg til Nøkkelen i SSH-Agenten
 SSH-agenten er et bakgrunnsprogram som holder styr på SSH-nøklene dine og passordene deres. Dette forhindrer at du må skrive inn passordet hver gang du kobler til.
@@ -60,7 +76,6 @@ Eksempel hvis den må startes (tallet for prosessen blir forskjellig fra datamas
     ```bash
     $ ssh-add ~/.ssh/id_ed25519_ghbruker
     Identity added: /Users/bruker/.ssh/id_ed25519_ghbruker (<din-epost-for-ghbruker>)
-    $ ssh-add ~/.ssh/id_ed25519_brB
     ```
 `din-epost-for-ghbruker` bør være den e-posten som er registert i github-kontoen og som man brukte for å generere nøkler i **Steg 2**.
 
@@ -125,7 +140,7 @@ Nå som alt er konfigurert, må du bruke de nye `Host`-aliasene i Git-kommandoen
     ```bash
     $ git clone git@github.com-ghbruker:ghbruker/repository-navn.git
     ```
-    Hvis URL-en er kopiert med Github `Code`knappen, blir vil den mangler den spesifikke delen `-ghbruker` etter `git@github.com`.  
+    Hvis URL-en er kopiert med Github `Code`knappen, vil den mangle den spesifikke delen `-ghbruker` etter `git@github.com`.  
 
 -   **For et eksisterende repository**, må du oppdatere `remote`-URL-en:
 
