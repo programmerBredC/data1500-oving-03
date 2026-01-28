@@ -186,6 +186,12 @@ Skriv SQL-spørringer som besvarer følgende spørsmål:
 4. **Lag en rapport som viser hver student, deres program, og antall emner de er registrert på**
 5. **Hent alle studenter som er registrert på både DATA1500 og DATA1100**
 
+SVAR:
+1. SELECT * FROM studenter WHERE program_id = Null;     eller SELECT fornavn, etternavn, epost FROM studenter WHERE program_id = Null;
+2. 
+
+
+
 **Viktig:** Lagre alle spørringene dine i en fil `oppgave2_losning.sql` i mappen `test-scripts` for at man kan teste disse med kommando:
 
 ```bash
