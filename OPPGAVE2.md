@@ -189,8 +189,9 @@ Skriv SQL-spørringer som besvarer følgende spørsmål:
    ___
    
 
-1. SELECT fornavn, etternavn, epost FROM studenter WHERE program_id IS NULL;
-2. SELECT DISTINCT e.emne_navn, COUNT (er.student_id) FROM emner e LEFT JOIN emneregistreringer er ON er.emne_id =
+   1. SELECT fornavn, etternavn, epost FROM studenter WHERE program_id IS NULL;
+   
+   2. SELECT DISTINCT e.emne_navn, COUNT (er.student_id) FROM emner e LEFT JOIN emneregistreringer er ON er.emne_id =
    e.emne_id GROUP BY e.emne_navn HAVING COUNT(er.student_id) = 0
 
 **Viktig:** Lagre alle spørringene dine i en fil `oppgave2_losning.sql` i mappen `test-scripts` for at man kan teste disse med kommando:
