@@ -34,44 +34,22 @@ Jeg ville ha sendt docker-compose.yml filen direkte til studenten.
 ## Oppgave 2: SQL-spørringer og databaseskjema
 
 ### Spørsmål 1: Hva er forskjellen mellom INNER JOIN og LEFT JOIN? Når bruker du hver av dem?
-
-**Ditt svar:**
-
-[Skriv ditt svar her]
-
----
+Inner join er default versjonen av Join som returnerer en rad hvis det finnes verdier i begge tabellene. Left Join inkluderer alle radene fra den første tabellen selv om det ikke finnes noen verdi i tabell to. 
 
 ### Spørsmål 2: Hvorfor bruker vi fremmednøkler? Hva skjer hvis du prøver å slette et program som har studenter?
-
-**Ditt svar:**
-
-[Skriv ditt svar her]
-
----
+Fremmednøkler kobler data mellom tabeller sammen. Dermed kan man ikke uten videre slette data som brukes andre steder. 
 
 ### Spørsmål 3: Forklar hva `GROUP BY` gjør og hvorfor det er nødvendig når du bruker aggregatfunksjoner.
+Group by grupperer radene i en tabell etter en viss egenskap som gjør at du kan bruke aggregatfunksjoner på deler av tabellen.  
 
-**Ditt svar:**
-
-[Skriv ditt svar her]
-
----
 
 ### Spørsmål 4: Hva er en indeks og hvorfor er den viktig for ytelse?
+Indeks sørger for at data hentes raskere ved  vise til lokasjonen til dataen.
 
-**Ditt svar:**
-
-[Skriv ditt svar her]
-
----
 
 ### Spørsmål 5: Hvordan ville du optimalisert en spørring som er veldig treg?
+Jeg hadde sett nærmere på søkealgoritmen. Her kan man gjøre spesifikke endringer som legge til indeks på ofte brukte rader. Man kan også være mer konkret med spørringen ved bruk av WHERE og HAVING slik at utvalget begrenses for hvert søk.  
 
-**Ditt svar:**
-
-[Skriv ditt svar her]
-
----
 
 ## Oppgave 3: Brukeradministrasjon og GRANT
 
