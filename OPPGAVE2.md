@@ -198,7 +198,10 @@ Skriv SQL-spørringer som besvarer følgende spørsmål:
       e.emne_id = er.emne_id WHERE (er.emne_navn, er.karakter) IN (SELECT emne_id, MAX(grade) FROM emneregistreringer GROUP BY emne_id
 
    4. SELECT s.fornavn, s.etternavn, p.program_navn, COUNT(e.emne_id) as antall_emner FROM programmer p JOIN studenter s ON p.program_id = s.program_id JOIN
-      emneregistreringer ON s.student_id = er.student_id JOIN emner e ON er.emne_id = e.emne_id GROUP BY s.student_id, s.fornavn, s.etternavn, p.program_navn; 
+      emneregistreringer ON s.student_id = er.student_id JOIN emner e ON er.emne_id = e.emne_id GROUP BY s.student_id, s.fornavn, s.etternavn, p.program_navn;
+
+   5. SELECT s.fornavn, s.etternavn FROM studenter s JOIN emneregistreringer er ON s.student_id = er.student_id JOIN emner e ON er.emne_id = e.emne_id WHERE e.emne_navn
+      IN ('DATA1500', 'DATA1100') GROUP BY s.student_id, s.fornavn, s.etternavn HAVING COUNT(DISTINCT e.emne_id) = 2;
 
 **Viktig:** Lagre alle spørringene dine i en fil `oppgave2_losning.sql` i mappen `test-scripts` for at man kan teste disse med kommando:
 
