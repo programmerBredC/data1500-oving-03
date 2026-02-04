@@ -197,6 +197,9 @@ Skriv SQL-spørringer som besvarer følgende spørsmål:
    3. SELECT s.fornavn, s.etternavn, p.program_navn, er.karakter FROM emneregistreringer er JOIN studenter s ON s.student_id = er.student_id JOIN emner e ON
       e.emne_id = er.emne_id WHERE (er.emne_navn, er.karakter) IN (SELECT emne_id, MAX(grade) FROM emneregistreringer GROUP BY emne_id
 
+   4. SELECT s.fornavn, s.etternavn, p.program_navn, COUNT(e.emne_id) as antall_emner FROM programmer p JOIN studenter s ON p.program_id = s.program_id JOIN
+      emneregistreringer ON s.student_id = er.student_id JOIN emner e ON er.emne_id = e.emne_id GROUP BY s.student_id, s.fornavn, s.etternavn, p.program_navn; 
+
 **Viktig:** Lagre alle spørringene dine i en fil `oppgave2_losning.sql` i mappen `test-scripts` for at man kan teste disse med kommando:
 
 ```bash
