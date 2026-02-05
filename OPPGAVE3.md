@@ -228,6 +228,9 @@ WHERE registrering_id = 1;
 
 5. **Lag en oversikt over alle roller og deres rettigheter**
 
+1.  CREATE ROLE program_ansvarlig LOGIN PASSWORD 'pass_program'; GRANT SELECT, UPDATE ON programmer TO program_ansvarlig;
+2.  
+
 **Viktig:** Lagre alle SQL-spørringene og SQL-setnigene dine i en fil `oppgave3_losning.sql` i mappen `test-scripts` for at man kan teste disse med kommando (OBS! du må forsikre at spørringene / setnignen ikke påvirker databaseintegritet/ønsket resultat, hvis de utføres flere ganger):
 
 ```bash
