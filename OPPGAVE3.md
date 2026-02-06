@@ -228,8 +228,14 @@ WHERE registrering_id = 1;
 
 5. **Lag en oversikt over alle roller og deres rettigheter**
 
+____
+
 1.  CREATE ROLE program_ansvarlig LOGIN PASSWORD 'pass_program'; GRANT SELECT, UPDATE ON programmer TO program_ansvarlig;
-2.  
+2.  CREATE ROLE student_self_view LOGIN PASSWORD 'pass_student'; CREATE VIEW mock_view AS SELECT * FROM studenter WHERE student_id = 1; GRANT SELECT ON mock_view TO
+    student_self_view;
+3. GRANT SELECT ON student_view TO foreleser_role;
+4. CREATE ROLE backup_bruker LOGIN PASSWORD 'pass_backup'; GRANT SELECT ON ALL TABLES IN SCHEMA public TO backup_bruker;
+5. SELECT grantee, privilege_type FROM information_schema.role_table_grants;
 
 **Viktig:** Lagre alle SQL-spørringene og SQL-setnigene dine i en fil `oppgave3_losning.sql` i mappen `test-scripts` for at man kan teste disse med kommando (OBS! du må forsikre at spørringene / setnignen ikke påvirker databaseintegritet/ønsket resultat, hvis de utføres flere ganger):
 
