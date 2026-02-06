@@ -54,50 +54,34 @@ Jeg hadde sett nærmere på søkealgoritmen. Her kan man gjøre spesifikke endri
 ## Oppgave 3: Brukeradministrasjon og GRANT
 
 ### Spørsmål 1: Hva er prinsippet om minste rettighet? Hvorfor er det viktig?
-
-**Ditt svar:**
-
-[Skriv ditt svar her]
-
----
+Prinsippet om minste rettighet passer på at brukere kun får tilgang til det de trenger for å gjøre jobben sin. Dermed beskytter man sensitiv data.  
 
 ### Spørsmål 2: Hva er forskjellen mellom en bruker og en rolle i PostgreSQL?
-
-**Ditt svar:**
-
-[Skriv ditt svar her]
-
----
+En bruker og rolle er i prinsippet det samme, de er begge en rolle. Forskjellen er at en bruker har logg inn rettigheter slik at den kan opererere i databasen. En rolle definerer et set med rettigheter som kan arves av bruker. 
 
 ### Spørsmål 3: Hvorfor er det bedre å bruke roller enn å gi rettigheter direkte til brukere?
-
-**Ditt svar:**
-
-[Skriv ditt svar her]
-
----
+Ved å gi bruker en rolle slipper man å definere rettigheter per bruker. Det gjør det også enklere å endre rettigheter til en gruppe brukere, og skaper en mer oversiktig struktur i kodingen. 
 
 ### Spørsmål 4: Hva skjer hvis du gir en bruker `DROP` rettighet? Hvilke sikkerhetsproblemer kan det skape?
+Drop rettigheter gir bruker mulighet til å slette objekter som tabeller fra databasen. Dette kan gjøre en stor mengde data sårbar for sletting eller endring, og kan i sin tur påvirke resten av funksjonen til databasen. 
 
-**Ditt svar:**
-
-[Skriv ditt svar her]
-
----
 
 ### Spørsmål 5: Hvordan ville du implementert at en student bare kan se sine egne karakterer, ikke andres?
+Jeg ville gitt en tilgang som selekterer bruker sin id. Kanskje kunne man knytte id opp mot radnummer: 
+ALTER TABLE karakterer ENABLE ROW LEVEL SECURITY;
 
-**Ditt svar:**
+CREATE POLICY student_egen_karakter
+  ON karakterer
+  FOR SELECT
+  USING (student_id = current_user);
 
-[Skriv ditt svar her]
-
----
 
 ## Notater og observasjoner
 
 Bruk denne delen til å dokumentere interessante funn, problemer du møtte, eller andre observasjoner:
 
-[Skriv dine notater her]
+- Hvordan WHERE og HAVING begge sorterer ut data, men før og etter gruppering.
+- Syntaks kan være litt forvirrende med ON, FOR, FROM, USING, og TO. 
 
 
 ## Oppgave 4: Brukeradministrasjon og GRANT
